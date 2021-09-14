@@ -1,0 +1,11 @@
+{
+    "name": "tx-generator-service",
+    "version": "1.0.0",
+    "private": true,
+    "dependencies": {
+        "web3": "^1.2.11"
+    },
+  "peerDependencies": {
+    "bignumber.js": "8.1.1"
+  }
+}
