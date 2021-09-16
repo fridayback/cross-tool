@@ -1,9 +1,0 @@
-{
-    "name": "task-service",
-    "version": "1.0.0",
-    "private": true,
-    "dependencies": {
-        "gsp-framework":"./packages/framework"
-    }
-}
-  
