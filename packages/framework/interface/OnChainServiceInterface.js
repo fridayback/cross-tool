@@ -11,6 +11,8 @@ class OnChainServiceInterface extends ServiceBase{
         this.connector = connector;
     }
 
+    async init(){await supper.init();}
+
     getConnector() {
         return this.connector;
     }

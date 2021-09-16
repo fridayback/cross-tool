@@ -9,7 +9,8 @@ class ConfigServiceInterface extends ServiceBase{
         this.cfgDir = cfgDir;
         // this.storageService = storageService;
     }
-    
+    async init(){}
+
     async getConfig(serviceType,serviceName,propertyPath){
         throw new Error("Abstract method!");
     }

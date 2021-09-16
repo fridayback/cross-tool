@@ -5,6 +5,8 @@ class TxMonitorServiceInterface extends ServiceBase{
         super('TxMonitorServiceInterface',serviceName);
     }
 
+    async init(){await supper.init();}
+    
     async addTx(txMonitor) {throw new Error("Abstract method!");}
 }
 

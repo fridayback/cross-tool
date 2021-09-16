@@ -6,6 +6,8 @@ class  EventServiceInterface extends ServiceBase{
         this.events={};
     }
     
+    async init(){await supper.init();}
+
     async subscribeEvent(event, handleMsgFn){
         if(!this.events[event]){
             this.events[event] =[];

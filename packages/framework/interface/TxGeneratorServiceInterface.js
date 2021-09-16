@@ -12,6 +12,9 @@ class TxGeneratorServiceInterface extends ServiceBase{
         this.scConfig = scConfig;
         this.scMap = {};
     }
+
+    async init(){await supper.init();}
+    
     async generateTxData(smartContract,method,args){throw new Error("Abstract method!");}
 
 }

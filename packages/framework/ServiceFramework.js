@@ -21,6 +21,7 @@ class ServiceFramework {
     }
 }
 
+let serviceFramework = new ServiceFramework();
 
 class ServiceBase {
     constructor(serviceType,serviceName) {
@@ -31,6 +32,8 @@ class ServiceBase {
 
     async init(options) {
         this.status = ServiceStatus.Ready;
+        const eventService = serviceFramework.getService('EventServiceInterface','EventService');
+        eventService.emitEvent('service-ready',{serviceType:this.serviceType,serviceName:this.serviceName});
     }
 
     async start(){
@@ -50,6 +53,6 @@ const ServiceStatus = {
     StartWork: 2
 }
 
-let serviceFramework = new ServiceFramework();
+
 
 module.exports = { serviceFramework, SERVICE_FRAME_ERROR, ServiceBase, ServiceStatus };

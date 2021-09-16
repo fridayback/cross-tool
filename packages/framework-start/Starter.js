@@ -13,14 +13,16 @@ class StartServiceFramework {
   }
 
   async assemble(otherServiceStartFun) {
+
     try {
-      let storageService = new StorageService();
+      let storageService = new startOption.StorageService();
       serviceFramework.registerService(
         'StorageServiceInterface',
         'StorageService',
         storageService,
       );
       await storageService.init();
+      this.event.emit('storage-service-ready', storageService);
 
       let configService = new ConfigServiceJson('./config');
       await configService.init();
@@ -38,6 +40,9 @@ class StartServiceFramework {
         eventService,
       );
 
+      this.event.emit('config-service-ready', eventService);
+
+
       let taskService = new TaskService();
       serviceFramework.registerService(
         'TaskServiceInterface',
@@ -45,8 +50,10 @@ class StartServiceFramework {
         taskService,
       );
       await taskService.init();
+      this.event.emit('task-service-ready', taskService);
 
-      await otherServiceStartFun();
+      
+      await otherServiceStartFun(this);
       this.state = 'initialized';
       this.event.emit('over', '');
     } catch (error) {
@@ -54,10 +61,10 @@ class StartServiceFramework {
     }
   }
 
-  async start(otherServiceStartFun) {
+  async start(startOption, otherServiceStartFun) {
     if (this.state === 'uninitialized') {
       this.state = 'initializing';
-      await this.assemble(otherServiceStartFun);
+      await this.assemble(startOption, otherServiceStartFun);
     } else if (this.state === 'initializing') {
       let p = new Promise((resolve, reject) => {
         this.event.on('over', () => {

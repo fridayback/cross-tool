@@ -22,7 +22,8 @@ class StorageServiceInterface extends ServiceBase{
             throw new TypeError("Cannot construct Abstract class directly");
         }
     }
-    
+
+    async init(){}
     // createTable创建一个新的，表名不能重复。
     //schema格式示例：
     // const schema = {

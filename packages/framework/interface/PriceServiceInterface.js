@@ -7,6 +7,8 @@ class PriceServiceInterface extends ServiceBase{
         super('PriceServiceInterface',serviceName);
     }
 
+    async init(){await supper.init();}
+
 }
 
 

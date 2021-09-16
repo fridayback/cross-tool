@@ -5,6 +5,8 @@ class TaskServiceInterface extends ServiceBase{
         super('TaskServiceInterface',serviceName);
     }
 
+    async init(){await supper.init();}
+
     async addTask(task,delay = 0) {throw new Error("Abstract method!");}
 
     async removeTask(taskId){throw new Error("Abstract method!");}

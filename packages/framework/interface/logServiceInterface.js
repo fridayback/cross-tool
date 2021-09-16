@@ -7,5 +7,7 @@ module.exports = class LogServiceInterface extends ServiceBase {
         super('LogServiceInterface',serviceName);
     }
 
+    async init(){await supper.init();}
+
     async getLoggerInstance(strPrefix) {throw new Error("Abstract method!");}
 }
